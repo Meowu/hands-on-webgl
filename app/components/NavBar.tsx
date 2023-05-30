@@ -20,7 +20,7 @@ const Navbar = () => {
                     <Link
                       key={index}
                       className="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-                      href="/chapters/01"
+                      href={"/chapters/" + (index + 1 + "").padStart(2, "0")}
                     >
                       {(index + 1 + "").padStart(2, "0")}
                     </Link>

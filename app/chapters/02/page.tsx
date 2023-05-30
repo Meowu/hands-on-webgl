@@ -5,6 +5,7 @@ import HelloCanvas from './HelloCanvas'
 import HelloPoint1 from './HelloPoint1'
 import HelloPoint2 from './HelloPoint2'
 import ClickedPoints from './ClickedPoints'
+import ColoredPoints from './ColoredPoints'
 
 export default function Chapter() {
     return <div className="p-6">
@@ -20,6 +21,9 @@ export default function Chapter() {
             </Card>
             <Card name={ClickedPoints.name}>
                 <ClickedPoints />
+            </Card>
+            <Card name={ColoredPoints.name}>
+                <ColoredPoints />
             </Card>
         </div>
     </div>

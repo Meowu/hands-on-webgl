@@ -4,6 +4,7 @@ import Card from '../../components/Card'
 import MultiPoint from './MultiPoint'
 import HelloTriangle from './HelloTriangle'
 import HelloQuad from './HelloQuad'
+import HelloQuad_FAN from './HelloQuad_FAN'
 
 export default function Chapter() {
     return <div className="p-6">
@@ -17,9 +18,9 @@ export default function Chapter() {
             <Card name={HelloQuad.name}>
                 <HelloQuad />
             </Card>
-            {/* <Card name={ClickedPoints.name}>
-                <ClickedPoints />
-            </Card> */}
+            <Card name={HelloQuad_FAN.name}>
+                <HelloQuad_FAN />
+            </Card>
             {/* <Card name={ColoredPoints.name}>
             </Card> */}
         </div>

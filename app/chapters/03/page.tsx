@@ -8,6 +8,7 @@ import HelloQuad_FAN from './HelloQuad_FAN'
 import TranslatedTriangle from './TranslatedTriangle'
 import RotatedTriangle from './RotatedTriangle'
 import RotatedTriangle_Matrix from './RotatedTriangle_Matrix'
+import RotatedTriangle_Matrix4 from './RotatedTriangle_Matrix4'
 
 export default function Chapter() {
     return <div className="p-6">
@@ -32,6 +33,9 @@ export default function Chapter() {
             </Card>
             <Card name={RotatedTriangle_Matrix.name}>
                 <RotatedTriangle_Matrix />
+            </Card>
+            <Card name={RotatedTriangle_Matrix4.name}>
+                <RotatedTriangle_Matrix4 />
             </Card>
         </div>
     </div>

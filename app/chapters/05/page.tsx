@@ -1,24 +1,15 @@
 'use client'
 
 import Card from '../../components/Card'
-import MultiPoint from './MultiPoint'
-import HelloTriangle from './HelloTriangle'
-import HelloQuad from './HelloQuad'
-import HelloQuad_FAN from './HelloQuad_FAN'
-import TranslatedTriangle from './TranslatedTriangle'
-import RotatedTriangle from './RotatedTriangle'
-import RotatedTriangle_Matrix from './RotatedTriangle_Matrix'
-import RotatedTriangle_Matrix4 from './RotatedTriangle_Matrix4'
-import RotatedTranslatedTriangle from './RotatedTranslatedTriangle'
-import RotatingTriangle from './RotatingTriangle'
+import MultiAttributeSize from './MultiAttributeSize'
 
 export default function Chapter() {
     return <div className="p-6">
         <div className="flex flex-wrap justify-center">
-            <Card name={MultiPoint.name}>
-                <MultiPoint />
+            <Card name={MultiAttributeSize.name}>
+                <MultiAttributeSize />
             </Card>
-            <Card name={HelloTriangle.name}>
+            {/* <Card name={HelloTriangle.name}>
                 <HelloTriangle />
             </Card>
             <Card name={HelloQuad.name}>
@@ -44,7 +35,7 @@ export default function Chapter() {
             </Card>
             <Card name={RotatingTriangle.name}>
                 <RotatingTriangle />
-            </Card>
+            </Card> */}
         </div>
     </div>
 }

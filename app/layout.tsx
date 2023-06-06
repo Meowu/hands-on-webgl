@@ -22,7 +22,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       <body className={inter.className + ' h-full min-h-screen'}>
         <div className="flex flex-col h-full flex-nowrap">
           <NavBar />
-          <div className="px-12 py-6">{props.children}</div>
+          <div className="px-12 py-6 overflow-auto">{props.children}</div>
         </div>
       </body>
     </html>

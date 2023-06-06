@@ -3,6 +3,7 @@
 import Card from '../../components/Card'
 import MultiAttributeSize from './MultiAttributeSize'
 import MultiAttributeSize_Interleaved from './MultiAttributeSize_Interleaved'
+import MultiAttributeColor from './MultiAttributeColor'
 
 export default function Chapter() {
     return <div className="p-6">
@@ -13,9 +14,9 @@ export default function Chapter() {
             <Card name={MultiAttributeSize_Interleaved.name}>
                 <MultiAttributeSize_Interleaved />
             </Card>
-            {/* <Card name={HelloQuad.name}>
-                <HelloQuad />
-            </Card> */}
+            <Card name={MultiAttributeColor.name}>
+                <MultiAttributeColor />
+            </Card>
             {/* <Card name={HelloQuad_FAN.name}>
                 <HelloQuad_FAN />
             </Card> */}

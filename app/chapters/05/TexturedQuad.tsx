@@ -68,9 +68,9 @@ const initVertexBuffers = (gl: WebGLRenderingContext): number => {
 
 const loadTexture = (
   gl: WebGLRenderingContext,
-  n,
-  texture,
-  u_Sampler,
+  n: number,
+  texture: WebGLTexture,
+  u_Sampler: WebGLUniformLocation,
   image: HTMLImageElement
 ) => {
   // 对纹理图像进行 Y 轴反转
@@ -94,15 +94,14 @@ const loadTexture = (
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, n);
 };
 
-const initTextures = (gl, n) => {
-  const texture = gl.createTexture();
+const initTextures = (gl: WebGLRenderingContext, n: number) => {
+  const texture = gl.createTexture()!;
 
-  const u_Sampler = gl.getUniformLocation(gl.program, "u_Sampler");
+  const u_Sampler = gl.getUniformLocation(gl.program, "u_Sampler")!;
 
   const image = new Image();
 
   image.onload = () => {
-    console.log("car: ", image);
     loadTexture(gl, n, texture, u_Sampler, image);
   };
 
@@ -143,17 +142,6 @@ export default function TexturedQuad() {
       console.log("Failed to init textures.");
       return;
     }
-
-    // return -1 if falsy
-    // const a_PointSize = gl.getAttribLocation(gl.program, 'a_PointSize')
-
-    // gl.vertexAttrib1f(a_PointSize, 5.0)
-
-    // gl.clearColor(0.0, 0.0, 0.0, 1.0);
-
-    // gl.clear(gl.COLOR_BUFFER_BIT);
-
-    // gl.drawArrays(gl.POINTS, 0, n)
   });
 
   return (

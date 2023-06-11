@@ -123,7 +123,7 @@ export default function OrthoView() {
 
   useEffect(() => {
     const canvas = ref.current as unknown as HTMLCanvasElement;
-    const nf: HTMLElement = document.getElementById('nearFar')!
+    const nf: HTMLElement = document.getElementById("nearFar")!;
     const gl = canvas.getContext("webgl")!;
 
     if (!gl) {
@@ -157,12 +157,21 @@ export default function OrthoView() {
       projMatrix: Matrix4,
       nf: HTMLElement
     ) => {
-      switch(ev.keyCode) {
-        case 39: g_near += 0.01; break;
-        case 37: g_near -= 0.01; break;
-        case 38: g_far += 0.01; break;
-        case 40: g_far -= 0.01; break;
-        default: return;
+      switch (ev.keyCode) {
+        case 39:
+          g_near += 0.01;
+          break;
+        case 37:
+          g_near -= 0.01;
+          break;
+        case 38:
+          g_far += 0.01;
+          break;
+        case 40:
+          g_far -= 0.01;
+          break;
+        default:
+          return;
       }
       draw(gl, n, u_ProjMatrix, projMatrix, nf);
     };
@@ -175,19 +184,21 @@ export default function OrthoView() {
       nf: HTMLElement
     ) => {
       // viewMatrix.setLookAt(g_eyeX, g_eyeY, g_eyeZ, 0, 0, 0, 0, 1, 0);
-      projMatrix.setOrtho(-1, 1, -1, 1, g_near, g_far)
+      projMatrix.setOrtho(-1, 1, -1, 1, g_near, g_far);
 
       gl.uniformMatrix4fv(u_ProjMatrix, false, projMatrix.elements);
 
       gl.clear(gl.COLOR_BUFFER_BIT);
 
-      nf.innerHTML = `near: ${Math.round(g_near * 100) / 100}, far: ${Math.round(g_far * 100) / 100}`
+      nf.innerHTML = `near: ${Math.round(g_near * 100) / 100}, far: ${
+        Math.round(g_far * 100) / 100
+      }`;
 
       gl.drawArrays(gl.TRIANGLES, 0, n);
     };
 
     document.addEventListener("keydown", (ev) => {
-      ev.stopPropagation()
+      ev.stopPropagation();
       keydown(ev, gl, n, u_ProjMatrix, projMatrix, nf);
     });
 

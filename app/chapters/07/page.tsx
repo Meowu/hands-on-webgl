@@ -7,6 +7,7 @@ import LookAtRotatedTriangles_mvMatrix from './LookAtRotatedTriangles_mvMatrix'
 import LookAtTrianglesWithKeys from './LookAtTrianglesWithKeys'
 import OrthoView from './OrthoView'
 import LookAtTrianglesWithKeys_ViewVolume from './LookAtTrianglesWithKeys_ViewVolume'
+import PerspectiveView from './PerspectiveView'
 
 export default function Chapter07() {
     return <div className="p-6">
@@ -28,6 +29,9 @@ export default function Chapter07() {
             </Card>
             <Card name={LookAtTrianglesWithKeys_ViewVolume.name}>
               <LookAtTrianglesWithKeys_ViewVolume />
+            </Card>
+            <Card name={PerspectiveView.name}>
+              <PerspectiveView />
             </Card>
         </div>
     </div>

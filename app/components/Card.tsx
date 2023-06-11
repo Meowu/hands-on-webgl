@@ -1,6 +1,6 @@
-const Card = ({ children, name }: { children: React.ReactNode, name: string }) => {
+const Card = ({ children, name, }: { children: React.ReactNode, name: string, }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mx-2 w-[400px] mb-6">
+    <div className="p-6 mx-2 mb-6 bg-white rounded-lg shadow-md">
       { name && <h2 className="mb-4 text-xl font-semibold">{ name }</h2> }
       {children}
       {/*<h2 className="mb-4 text-xl font-semibold">Card Title</h2>*/}

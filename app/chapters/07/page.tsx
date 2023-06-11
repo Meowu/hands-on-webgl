@@ -8,6 +8,7 @@ import LookAtTrianglesWithKeys from './LookAtTrianglesWithKeys'
 import OrthoView from './OrthoView'
 import LookAtTrianglesWithKeys_ViewVolume from './LookAtTrianglesWithKeys_ViewVolume'
 import PerspectiveView from './PerspectiveView'
+import PerspectiveView_mvp from './PerspectiveView_mvp'
 
 export default function Chapter07() {
     return <div className="p-6">
@@ -32,6 +33,9 @@ export default function Chapter07() {
             </Card>
             <Card name={PerspectiveView.name}>
               <PerspectiveView />
+            </Card>
+            <Card name={PerspectiveView_mvp.name}>
+              <PerspectiveView_mvp />
             </Card>
         </div>
     </div>

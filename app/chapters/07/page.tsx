@@ -2,6 +2,7 @@
 
 import Card from '../../components/Card'
 import LookAtTriangles from './LookAtTriangles'
+import LookAtRotatedTriangles from './LookAtRotatedTriangles'
 
 export default function Chapter07() {
     return <div className="p-6">
@@ -9,9 +10,9 @@ export default function Chapter07() {
             <Card name={LookAtTriangles.name}>
                 <LookAtTriangles />
             </Card>
-            {/* <Card name={MultiAttributeSize_Interleaved.name}>
-                <MultiAttributeSize_Interleaved />
-            </Card> */}
+            <Card name={LookAtRotatedTriangles.name}>
+                <LookAtRotatedTriangles />
+            </Card>
             {/* <Card name={MultiAttributeColor.name}>
                 <MultiAttributeColor />
             </Card> */}

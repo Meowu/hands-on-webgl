@@ -10,6 +10,7 @@ import LookAtTrianglesWithKeys_ViewVolume from './LookAtTrianglesWithKeys_ViewVo
 import PerspectiveView from './PerspectiveView'
 import PerspectiveView_mvp from './PerspectiveView_mvp'
 import PerspectiveView_mvpMatrix from './PerspectiveView_mvpMatrix'
+import DepthBuffer from './DepthBuffer'
 
 export default function Chapter07() {
     return <div className="p-6">
@@ -40,6 +41,9 @@ export default function Chapter07() {
             </Card>
             <Card name={PerspectiveView_mvpMatrix.name}>
               <PerspectiveView_mvpMatrix />
+            </Card>
+            <Card name={DepthBuffer.name}>
+              <DepthBuffer />
             </Card>
         </div>
     </div>

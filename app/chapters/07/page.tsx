@@ -12,6 +12,7 @@ import PerspectiveView_mvp from './PerspectiveView_mvp'
 import PerspectiveView_mvpMatrix from './PerspectiveView_mvpMatrix'
 import DepthBuffer from './DepthBuffer'
 import HelloCube from './HelloCube'
+import ColoredCube from './ColoredCube'
 
 export default function Chapter07() {
     return <div className="p-6">
@@ -48,6 +49,9 @@ export default function Chapter07() {
             </Card>
             <Card name={HelloCube.name}>
               <HelloCube />
+            </Card>
+            <Card name={ColoredCube.name}>
+              <ColoredCube />
             </Card>
         </div>
     </div>

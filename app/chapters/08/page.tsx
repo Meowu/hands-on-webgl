@@ -2,6 +2,7 @@
 
 import Card from '../../components/Card'
 import LightedCube from './LightedCube'
+import LightedCube_animation from './LightedCube_animation'
 
 export default function Chapter() {
     return <div className="p-6">
@@ -9,9 +10,9 @@ export default function Chapter() {
             <Card name={LightedCube.name}>
                 <LightedCube />
             </Card>
-            {/* <Card name={HelloPoint1.name}>
-                <HelloPoint1 />
-            </Card> */}
+            <Card name={LightedCube_animation.name}>
+                <LightedCube_animation />
+            </Card>
             {/* <Card name={HelloPoint2.name}>
                 <HelloPoint2 />
             </Card> */}

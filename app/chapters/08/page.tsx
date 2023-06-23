@@ -6,6 +6,7 @@ import LightedCube_animation from './LightedCube_animation'
 import LightedCube_ambient from './LightedCube_ambient'
 import LightedTranslatedRotatedCube from './LightedTranslatedRotatedCube'
 import PointLightedCube from './PointLightedCube'
+import PointLightedCube_animation from './PointLightedCube_animation'
 
 export default function Chapter() {
     return <div className="p-6">
@@ -24,6 +25,9 @@ export default function Chapter() {
             </Card>
             <Card name={PointLightedCube.name}>
                 <PointLightedCube />
+            </Card>
+            <Card name={PointLightedCube_animation.name}>
+                <PointLightedCube_animation />
             </Card>
         </div>
     </div>

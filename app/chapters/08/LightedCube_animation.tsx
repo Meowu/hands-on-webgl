@@ -8,7 +8,6 @@ const animate = (angle: number) => {
   const elapsed = now - g_last
   g_last = now;
   let newAngle = angle + (ANGLE_STEP * elapsed) / 1000.0
-  console.log('new angle: ', newAngle)
   return (newAngle %= 360)
 }
 
@@ -183,7 +182,6 @@ export default function LightedCube_animation() {
 
     const tick = () => {
       currentAngle = animate(currentAngle)
-      console.log('tick: ', currentAngle)
 
       modelMatrix.setRotate(currentAngle, 0, 1, 0) // Rotate around the y-axis
       mvpMatrix.set(vpMatrix).multiply(modelMatrix);
@@ -196,7 +194,6 @@ export default function LightedCube_animation() {
   
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   
-      console.log('render cube.')
       // Draw the cube
       gl.drawElements(gl.TRIANGLES, n, gl.UNSIGNED_BYTE, 0);
 

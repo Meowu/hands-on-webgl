@@ -193,7 +193,6 @@ export default function LightedTranslatedRotatedCube() {
     gl.uniformMatrix4fv(u_NormalMatrix, false, normalMatrix.elements);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-    console.log('render cube.')
     // Draw the cube
     gl.drawElements(gl.TRIANGLES, n, gl.UNSIGNED_BYTE, 0);
 

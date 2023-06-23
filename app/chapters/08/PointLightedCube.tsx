@@ -98,14 +98,17 @@ const VSHADER_SOURCE =
    attribute vec4 a_Color;
    attribute vec4 a_Normal;
    uniform mat4 u_MvpMatrix;
+   uniform mat4 u_ModelMatrix;
    uniform vec3 u_LightColor;
-   uniform vec3 u_LightDirection;
+   uniform vec3 u_LightPosition;
    uniform vec3 u_AmbientLight;
    varying vec4 v_Color;
    void main() {
      gl_Position = u_MvpMatrix * a_Position;
      vec3 normal = normalize(vec3(a_Normal));
-     float nDotL = max(dot(u_LightDirection, normal), 0.0);
+     vec4 vertexPosition = u_ModelMatrix * a_Position;
+     vec3 lightDirection = normalize(u_LightPosition - vec3(vertexPosition));
+     float nDotL = max(dot(lightDirection, normal), 0.0);
      vec3 diffuse = u_LightColor * vec3(a_Color) * nDotL;
      vec3 ambient = u_AmbientLight * a_Color.rgb;
      v_Color = vec4(diffuse + ambient, a_Color.a);
@@ -121,7 +124,7 @@ const FSHADER_SOURCE =
       gl_FragColor = v_Color;
     }`
 
-export default function LightedCube_ambient() {
+export default function PointLightedCube() {
   /**
   /* 要用 null 初始，不如报错 -> 不能将类型“MutableRefObject<HTMLCanvasElement | undefined>”
   /* 分配给类型“LegacyRef<HTMLCanvasElement> | undefined”。
@@ -150,10 +153,12 @@ export default function LightedCube_ambient() {
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.enable(gl.DEPTH_TEST);
 
-      // Get the storage location of u_MvpMatrix
+    // Get the storage location of u_MvpMatrix
+    const u_ModelMatrix = gl.getUniformLocation(gl.program, 'u_ModelMatrix');
     const u_MvpMatrix = gl.getUniformLocation(gl.program, 'u_MvpMatrix');
+    const u_NormalMatrix = gl.getUniformLocation(gl.program, 'u_NormalMatrix');
     const u_LightColor = gl.getUniformLocation(gl.program, 'u_LightColor');
-    const u_LightDirection = gl.getUniformLocation(gl.program, 'u_LightDirection');
+    const u_LightPosition = gl.getUniformLocation(gl.program, 'u_LightPosition');
     const u_AmbientLight = gl.getUniformLocation(gl.program, 'u_AmbientLight');
     if (!u_MvpMatrix) { 
       console.log('Failed to get the storage location of u_MvpMatrix');
@@ -163,16 +168,23 @@ export default function LightedCube_ambient() {
     gl.uniform3f(u_LightColor, 1.0, 1.0, 1.0);
     gl.uniform3f(u_AmbientLight, 0.2, 0.2, 0.2);
 
-    const lightDirection = new Vector3([5.0, 3.0, 4.0]);
-    lightDirection.normalize();
-    gl.uniform3fv(u_LightDirection, lightDirection.elements);
+    gl.uniform3f(u_LightPosition, 0.0, 3.0, 4.0);
   
+    const modelMatrix = new Matrix4();
     const mvpMatrix = new Matrix4();
+    const normalMatrix = new Matrix4();
     mvpMatrix.setPerspective(30, canvas.width/canvas.height, 1, 100);
     mvpMatrix.lookAt(3, 3, 7, 0, 0, 0, 0, 1, 0);
 
+    modelMatrix.setRotate(90, 0, 1, 0);
+    gl.uniformMatrix4fv(u_ModelMatrix, false, modelMatrix.elements);
+
     // Pass the model view projection matrix to u_MvpMatrix
     gl.uniformMatrix4fv(u_MvpMatrix, false, mvpMatrix.elements);
+
+    normalMatrix.setInverseOf(modelMatrix);
+    normalMatrix.transpose();
+    gl.uniformMatrix4fv(u_NormalMatrix, false, normalMatrix.elements);
 
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 

@@ -88,7 +88,7 @@ const g_modelMatrix = new Matrix4()
 const g_mvpMatrix = new Matrix4()
 const g_normalMatrix = new Matrix4()
 
-const drawBox = (gl: WebGLRenderingContext, n: number, viewProjMatrix: Matrix4, u_MvpMatrix: number, u_NormalMatrix: number) => {
+const drawBox = (gl: WebGLRenderingContext, n: number, viewProjMatrix: Matrix4, u_MvpMatrix: WebGLUniformLocation, u_NormalMatrix: WebGLUniformLocation) => {
   g_mvpMatrix.set(viewProjMatrix)
   g_mvpMatrix.multiply(g_modelMatrix)
   gl.uniformMatrix4fv(u_MvpMatrix, false, g_mvpMatrix.elements)
@@ -100,21 +100,23 @@ const drawBox = (gl: WebGLRenderingContext, n: number, viewProjMatrix: Matrix4, 
   gl.drawElements(gl.TRIANGLES, n, gl.UNSIGNED_BYTE, 0)
 }
 
-const draw = (gl: WebGLRenderingContext, n: number, viewProjMatrix: Matrix4, u_MvpMatrix: number, u_NormalMatrix: number) => {
+const draw = (gl: WebGLRenderingContext, n: number, viewProjMatrix: Matrix4, u_MvpMatrix: WebGLUniformLocation, u_NormalMatrix: WebGLUniformLocation) => {
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 
+  // arm1
   const arm1Length = 10.0
   g_modelMatrix.setTranslate(0.0, -12.0, 0.0)
   g_modelMatrix.rotate(g_arm1Angle, 0.0, 1.0, 0.0)
   drawBox(gl, n, viewProjMatrix, u_MvpMatrix, u_NormalMatrix)
 
+  // arm2
   g_modelMatrix.translate(0.0, arm1Length, 0.0)
   g_modelMatrix.rotate(g_joint1Angle, 0.0, 0.0, 1.0)
   g_modelMatrix.scale(1.3, 1.0, 1.3)
   drawBox(gl, n, viewProjMatrix, u_MvpMatrix, u_NormalMatrix)
 }
 
-const keydown = (event: KeyboardEvent, gl: WebGLRenderingContext, n: number, viewProjMatrix: Matrix4, u_MvpMatrix: number, u_NormalMatrix: number) => {
+const keydown = (event: KeyboardEvent, gl: WebGLRenderingContext, n: number, viewProjMatrix: Matrix4, u_MvpMatrix: WebGLUniformLocation, u_NormalMatrix: WebGLUniformLocation) => {
   switch (event.keyCode) {
     case 38:
       if (g_joint1Angle < 135.0) g_joint1Angle += ANGLE_STEP;

@@ -2,6 +2,7 @@
 
 import Card from '../../components/Card'
 import JointModel from './JointModel'
+import MultiJointModel from './MultiJointModel'
 
 export default function Chapter() {
     return <div className="p-6">
@@ -9,9 +10,9 @@ export default function Chapter() {
             <Card name={JointModel.name}>
                 <JointModel />
             </Card>
-            {/* <Card name={MultiAttributeSize_Interleaved.name}>
-                <MultiAttributeSize_Interleaved />
-            </Card> */}
+            <Card name={MultiJointModel.name}>
+                <MultiJointModel />
+            </Card>
             {/* <Card name={MultiAttributeColor.name}>
                 <MultiAttributeColor />
             </Card> */}

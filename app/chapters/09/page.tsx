@@ -3,6 +3,7 @@
 import Card from '../../components/Card'
 import JointModel from './JointModel'
 import MultiJointModel from './MultiJointModel'
+import MultiJointModel_segment from './MultiJointModel_segment'
 
 export default function Chapter() {
     return <div className="p-6">
@@ -13,9 +14,9 @@ export default function Chapter() {
             <Card name={MultiJointModel.name}>
                 <MultiJointModel />
             </Card>
-            {/* <Card name={MultiAttributeColor.name}>
-                <MultiAttributeColor />
-            </Card> */}
+            <Card name={MultiJointModel_segment.name}>
+                <MultiJointModel_segment />
+            </Card>
             {/* <Card name={TexturedQuad.name}>
                 <TexturedQuad />
             </Card> */}

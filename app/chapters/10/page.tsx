@@ -2,6 +2,7 @@
 
 import Card from '../../components/Card'
 import RoateObject from './RotateObject'
+import PickObject from './PickObject'
 
 export default function Chapter() {
     return <div className="p-6">
@@ -9,9 +10,9 @@ export default function Chapter() {
             <Card name={RoateObject.name}>
                 <RoateObject />
             </Card>
-            {/* <Card name={MultiJointModel.name}>
-                <MultiJointModel />
-            </Card> */}
+            <Card name={PickObject.name}>
+                <PickObject />
+            </Card>
             {/* <Card name={MultiJointModel_segment.name}>
                 <MultiJointModel_segment />
             </Card> */}
